@@ -1,5 +1,6 @@
 package org.aldev.controller;
 
+import io.vertx.core.json.JsonObject;
 import jakarta.annotation.security.RolesAllowed;
 import jakarta.inject.Inject;
 import jakarta.ws.rs.*;
@@ -18,6 +19,12 @@ public class MyController {
 
     @Inject
     MyService myService;
+
+    @GET
+    @Path("/hello")
+    public Response hello(){
+        return Response.ok(new JsonObject("{\"message\":\"Hello From Service!!\"}")).build();
+    }
 
     @GET
     @Path("/test")
